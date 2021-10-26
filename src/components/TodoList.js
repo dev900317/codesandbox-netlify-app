@@ -40,7 +40,7 @@ const StyledItem = styled(motion.li)`
   padding: 4px 0;
 `;
 
-const StyledList = styled(motion.ul)`
+const StyledList = styled(motion.ol)`
   /* list-style-type: none; */
   padding: 40px 24px;
 `;
