@@ -1,10 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 const Input = styled.input`
   font-family: "Inter", sans-serif;
   font-size: 100%;
-  padding: 8px 16px;
+  padding: 16px 32px;
   border: none;
   border-radius: 4px;
   outline: none;
@@ -27,6 +28,8 @@ const Label = styled.label`
   margin-bottom: 8px;
   font-weight: 700;
   letter-spacing: 0.5px;
+  align-self: center;
+  margin-bottom: 24px;
 `;
 
 const FormGroup = styled.div`
@@ -35,7 +38,7 @@ const FormGroup = styled.div`
 `;
 
 const SubmitBtn = styled.button`
-  padding: 8px 16px;
+  padding: 16px 32px;
   align-self: center;
   border: none;
   border-radius: 4px;
@@ -55,6 +58,10 @@ const SubmitBtn = styled.button`
   }
 `;
 
+const StyledEmoji = styled.span`
+  font-size: 64px;
+`;
+
 const NewTodo = ({ addTodo }) => {
   const [title, setTitle] = useState();
 
@@ -69,9 +76,22 @@ const NewTodo = ({ addTodo }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <motion.form
+      initial={{ y: -20, opacity: 0 }}
+      animate={{
+        y: 0,
+        opacity: 1,
+        transition: { duration: 0.2, type: "spring" }
+      }}
+      onSubmit={handleSubmit}
+    >
       <FormGroup>
-        <Label htmlFor="newTodo">Type here:</Label>
+        <Label htmlFor="newTodo">
+          <StyledEmoji role="img" aria-label="man-bowing">
+            🙇‍♂️
+          </StyledEmoji>
+        </Label>
+
         <Input
           id="newTodo"
           type="text"
@@ -79,9 +99,9 @@ const NewTodo = ({ addTodo }) => {
           value={title}
           onChange={handleChange}
         />
-        <SubmitBtn type="submit">Add</SubmitBtn>
+        <SubmitBtn type="submit">Add ToDo</SubmitBtn>
       </FormGroup>
-    </form>
+    </motion.form>
   );
 };
 

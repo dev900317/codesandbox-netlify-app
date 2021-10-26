@@ -18,7 +18,7 @@ const container = {
 const item = {
   hidden: { x: -30, opacity: 0 },
   show: { x: 0, opacity: 1, transition: { duration: 0.5, type: "spring" } },
-  exit: { y: -50, opacity: 0, transition: { duration: 0.3, type: "spring" } },
+  exit: { x: -50, opacity: 0, transition: { duration: 0.3, type: "spring" } },
   hover: { scale: 1.5, originX: 0 }
 };
 
@@ -31,6 +31,7 @@ const StyledItem = styled(motion.li)`
 
 const StyledList = styled(motion.ul)`
   list-style-type: none;
+  padding: 40px 0;
 `;
 
 const TodoList = ({ todos, removeTodo }) => {
