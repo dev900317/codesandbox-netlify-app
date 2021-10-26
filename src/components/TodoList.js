@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 
+// ANIMATION
 const container = {
   hidden: {
     opacity: 0
@@ -8,6 +9,7 @@ const container = {
   show: {
     opacity: 1,
     transition: {
+      duration: 0.2,
       when: "beforeChildren",
       staggerChildren: 0.3,
       staggerDirection: 1
@@ -17,19 +19,19 @@ const container = {
 
 const item = {
   hidden: { x: -30, opacity: 0 },
-  show: { x: 0, opacity: 1, transition: { duration: 0.5, type: "spring" } },
+  show: { x: 0, opacity: 1, transition: { duration: 0.2, type: "spring" } },
   exit: {
-    x: -100,
+    x: -30,
     opacity: 0,
     transition: {
-      duration: 0.4,
-      type: "spring",
-      stiffness: 150
+      duration: 0.3,
+      type: "spring"
     }
   },
   hover: { scale: 1.1, originX: 0 }
 };
 
+// STYLING
 const StyledItem = styled(motion.li)`
   font-size: 24px;
   font-weight: 700;
@@ -40,9 +42,10 @@ const StyledItem = styled(motion.li)`
 
 const StyledList = styled(motion.ul)`
   /* list-style-type: none; */
-  padding: 40px 0;
+  padding: 40px 24px;
 `;
 
+// COMPONENT
 const TodoList = ({ todos, removeTodo }) => {
   const handleRemove = (e) => {
     const title = e.target.textContent;
