@@ -1,55 +1,15 @@
-import styled from "styled-components";
-import { motion, AnimatePresence } from "framer-motion";
-
-// ANIMATION
-const container = {
-  hidden: {
-    opacity: 0
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      duration: 0.2,
-      when: "beforeChildren",
-      staggerChildren: 0.3,
-      staggerDirection: 1
-    }
-  }
-};
-
-const item = {
-  hidden: { x: -30, opacity: 0 },
-  show: { x: 0, opacity: 1, transition: { duration: 0.2, type: "spring" } },
-  exit: {
-    x: -30,
-    opacity: 0,
-    transition: {
-      duration: 0.3,
-      type: "spring"
-    }
-  },
-  hover: { scale: 1.1, originX: 0 }
-};
-
-// STYLING
-const StyledItem = styled(motion.li)`
-  font-size: 24px;
-  font-weight: 700;
-  font-family: "Poppins", sans-serif;
-  cursor: pointer;
-  padding: 4px 0;
-`;
-
-const StyledList = styled(motion.ol)`
-  /* list-style-type: none; */
-  padding: 40px 24px;
-`;
+import {
+  StyledList,
+  StyledItem,
+  container,
+  item
+} from "../styles/TodoList.styles";
+import { AnimatePresence } from "framer-motion";
 
 // COMPONENT
 const TodoList = ({ todos, removeTodo }) => {
   const handleRemove = (e) => {
-    const title = e.target.textContent;
-    removeTodo(title);
+    removeTodo(e.target.id);
   };
 
   return (
@@ -65,6 +25,7 @@ const TodoList = ({ todos, removeTodo }) => {
               whileHover="hover"
               key={todo.id}
               onClick={handleRemove}
+              id={todo.id}
             >
               {todo.title}
             </StyledItem>

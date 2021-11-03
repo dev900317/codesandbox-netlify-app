@@ -32,8 +32,8 @@ export default function App() {
     setTodos([...todos, { title, id: uuidv4() }]);
   };
 
-  const removeTodo = (title) => {
-    setTodos(todos.filter((todo) => todo.title !== title));
+  const removeTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   return (
